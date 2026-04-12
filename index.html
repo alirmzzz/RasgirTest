@@ -267,10 +267,22 @@ canvas{width:100%;height:220px;border:1px solid var(--line);border-radius:14px;b
       <div class="card">
         <div class="head"><div><div class="title">ورود از متن</div><div class="meta">پوشش جدول‌های مارک‌داون، خطوط مستقل، و بلوک‌های چندتاریخی</div></div><div class="section-badge">تشخیص توسعه‌یافته</div></div>
         <div class="form">
-          <div class="c12"><label>متن خام</label><textarea id="bulkText" placeholder="120م 14050527
+          <div class="c12">
+            <div style="display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:4px">
+              <label style="margin:0">متن خام</label>
+              <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+                <span class="mini">نوع کیبورد:</span>
+                <select id="bulkKeyboardMode" style="width:auto;min-width:150px;min-height:36px">
+                  <option value="numeric" selected>ابتدا عددی</option>
+                  <option value="text">معمولی</option>
+                </select>
+              </div>
+            </div>
+            <textarea id="bulkText" inputmode="numeric" autocapitalize="off" autocorrect="off" spellcheck="false" placeholder="120م 14050527
 150مت تاریخ 14050727
 ۴ فقره چک به مبلغ 189م به تاریخ های ...
-یا جدول‌های مارک‌داون فایل نمونه"></textarea></div>
+یا جدول‌های مارک‌داون فایل نمونه"></textarea>
+          </div>
           <div class="c12"><div class="toolbar">
             <button class="btn secondary" onclick="parseTextToChecks()">استخراج</button>
             <button class="btn secondary" onclick="appendParsedChecks()">افزودن به لیست</button>
@@ -396,7 +408,7 @@ canvas{width:100%;height:220px;border:1px solid var(--line);border-radius:14px;b
 
 <script>
 let lastResult=null, parsedChecksBuffer=[];
-const HISTORY_KEY='check_discount_history_v24', DRAFT_KEY='check_discount_draft_v24', THEME_KEY='check_discount_theme_v24';
+const HISTORY_KEY='check_discount_history_v25', DRAFT_KEY='check_discount_draft_v25', THEME_KEY='check_discount_theme_v25';
 
 function faToEn(str){ const fa='۰۱۲۳۴۵۶۷۸۹', ar='٠١٢٣٤٥٦٧٨٩'; return String(str||'').split('').map(ch=>fa.includes(ch)?String(fa.indexOf(ch)):ar.includes(ch)?String(ar.indexOf(ch)):ch==='٬'?'':ch).join(''); }
 function onlyDigits(s){ return faToEn(s).replace(/\D/g,''); }
@@ -432,6 +444,25 @@ function parseMoneyRawToToman(raw, unitHint){
   return Math.round(n);
 }
 function dedupeChecks(items){ const seen=new Set(), out=[]; items.forEach(x=>{ const k=x.amountToman+'|'+x.date8; if(!seen.has(k)){ seen.add(k); out.push(x); } }); return out; }
+
+function applyBulkKeyboardMode(){
+  const box=document.getElementById('bulkText');
+  const mode=document.getElementById('bulkKeyboardMode')?.value || 'numeric';
+  if(!box) return;
+  if(mode==='numeric') box.setAttribute('inputmode','numeric');
+  else box.setAttribute('inputmode','text');
+}
+function refreshBulkTextFocus(){
+  const box=document.getElementById('bulkText');
+  if(!box) return;
+  const hadFocus=document.activeElement===box;
+  applyBulkKeyboardMode();
+  if(hadFocus){
+    box.blur();
+    setTimeout(()=>box.focus(),20);
+  }
+}
+
 function clearBulkText(){
   const box=document.getElementById('bulkText');
   box.value='';
@@ -902,7 +933,7 @@ function downloadTXT(){ if(!lastResult){ alert('اول محاسبه کن'); retu
 function copyReport(){ if(!lastResult){ alert('اول محاسبه کن'); return; } const text=buildReport(lastResult); if(navigator.clipboard&&navigator.clipboard.writeText){ navigator.clipboard.writeText(text).then(()=>alert('گزارش کپی شد')).catch(()=>fallbackCopy(text)); } else fallbackCopy(text); }
 function fallbackCopy(text){ const ta=document.createElement('textarea'); ta.value=text; document.body.appendChild(ta); ta.select(); document.execCommand('copy'); document.body.removeChild(ta); alert('گزارش کپی شد'); }
 
-function getDraftObject(){ const rows=[...document.querySelectorAll('.compact-row')].map(row=>({amount:faToEn(row.querySelector('.amount').value),date:onlyDigits(row.querySelector('.date').value)})); return {dealName:document.getElementById('dealName').value,dealNote:document.getElementById('dealNote').value,dealTags:document.getElementById('dealTags').value,originDate:onlyDigits(document.getElementById('originDate').value),monthlyRate:document.getElementById('monthlyRate').value,monthBase:document.getElementById('monthBase').value,pvMethod:document.getElementById('pvMethod').value,bulkText:document.getElementById('bulkText').value,rows}; }
+function getDraftObject(){ const rows=[...document.querySelectorAll('.compact-row')].map(row=>({amount:faToEn(row.querySelector('.amount').value),date:onlyDigits(row.querySelector('.date').value)})); return {dealName:document.getElementById('dealName').value,dealNote:document.getElementById('dealNote').value,dealTags:document.getElementById('dealTags').value,originDate:onlyDigits(document.getElementById('originDate').value),monthlyRate:document.getElementById('monthlyRate').value,monthBase:document.getElementById('monthBase').value,pvMethod:document.getElementById('pvMethod').value,bulkKeyboardMode:document.getElementById('bulkKeyboardMode')?.value||'numeric',bulkText:document.getElementById('bulkText').value,rows}; }
 function saveDraft(){ try{ localStorage.setItem(DRAFT_KEY,JSON.stringify(getDraftObject())); }catch(e){} }
 function loadDraft(){ try{ const raw=localStorage.getItem(DRAFT_KEY); if(!raw){ alert('پیش‌نویسی پیدا نشد'); return; } applySavedDraft(JSON.parse(raw)); alert('پیش‌نویس بارگذاری شد'); }catch(e){ alert('بارگذاری انجام نشد'); } }
 function applySavedDraft(obj){ document.getElementById('dealName').value=obj.dealName||''; document.getElementById('dealNote').value=obj.dealNote||'';
@@ -1022,7 +1053,7 @@ function closeKpiInfo(){
 
 window.addEventListener('beforeunload',saveDraft);
 window.addEventListener('load',()=>{
-  ['dealName','dealNote','dealTags','originDate','monthlyRate','monthBase','pvMethod','bulkText','historySearch','historyMethodFilter','bulkDateInput','bulkAmountInput'].forEach(id=>{
+  ['dealName','dealNote','dealTags','originDate','monthlyRate','monthBase','pvMethod','bulkText','historySearch','historyMethodFilter','bulkDateInput','bulkAmountInput','bulkKeyboardMode'].forEach(id=>{
     const el=document.getElementById(id);
     if(el){
       el.addEventListener('input',()=>{ if(id==='historySearch') renderHistory(); else saveDraft(); });
@@ -1030,6 +1061,14 @@ window.addEventListener('load',()=>{
     }
   });
   document.getElementById('themeToggle').addEventListener('click',toggleTheme);
+  const bulkKeyboardMode=document.getElementById('bulkKeyboardMode');
+  if(bulkKeyboardMode){
+    bulkKeyboardMode.addEventListener('change',()=>{ refreshBulkTextFocus(); saveDraft(); });
+  }
+  const bulkText=document.getElementById('bulkText');
+  if(bulkText){
+    bulkText.addEventListener('focus', applyBulkKeyboardMode);
+  }
   initTabs();
   let savedTheme='light'; try{ savedTheme=localStorage.getItem(THEME_KEY)||'light'; }catch(e){}
   applyTheme(savedTheme);

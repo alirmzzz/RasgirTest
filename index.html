@@ -87,27 +87,6 @@ button:focus-visible{
 .toolbar .full{grid-column:1/-1}
 .mini{font-size:11px;color:var(--muted);line-height:1.8}
 .status-strip{display:flex;gap:8px;align-items:center;justify-content:space-between;flex-wrap:wrap;padding:8px 10px;border:1px dashed var(--line-strong);border-radius:14px;background:var(--bg-soft)}
-.preview-panel,.test-panel{
-  margin-top:8px;border:1px solid var(--line);border-radius:14px;background:linear-gradient(180deg,var(--card-strong),var(--bg-soft));
-  overflow:hidden
-}
-.preview-head,.test-head{
-  display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;
-  padding:10px 12px;border-bottom:1px solid var(--line)
-}
-.preview-body,.test-body{padding:10px}
-.preview-table-wrap,.test-table-wrap{overflow:auto;border:1px solid var(--line);border-radius:12px}
-.preview-table input{
-  min-height:34px;padding:0 8px;font-size:14px;border-radius:10px
-}
-.preview-empty,.test-empty{padding:12px;color:var(--muted);font-size:12px}
-.badge{
-  display:inline-flex;align-items:center;gap:4px;padding:4px 8px;border-radius:999px;
-  background:var(--accent-soft);color:var(--accent);font-size:10px;border:1px solid rgba(37,99,235,.14)
-}
-.badge.ok{background:rgba(15,118,110,.10);color:var(--ok);border-color:rgba(15,118,110,.16)}
-.badge.bad{background:rgba(185,28,28,.08);color:var(--danger);border-color:rgba(185,28,28,.16)}
-
 .rows{display:grid;gap:8px;max-height:42vh;overflow:auto;padding-left:1px}
 .compact-rows{display:grid;gap:6px;max-height:42vh;overflow:auto}
 .compact-row{
@@ -206,6 +185,43 @@ canvas{width:100%;height:220px;border:1px solid var(--line);border-radius:14px;b
 .info-close{width:auto;min-height:36px;padding:0 12px}
 .info-modal-body{font-size:13px;line-height:1.9;color:var(--text)}
 .info-modal-body .muted{color:var(--muted);font-size:12px}
+.preview-panel{
+  margin-top:10px;border:1px solid var(--line);border-radius:16px;background:linear-gradient(180deg,var(--card-strong),var(--bg-soft));
+  overflow:hidden
+}
+.preview-head{
+  display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;
+  padding:10px 12px;border-bottom:1px solid var(--line);background:var(--bg-soft)
+}
+.preview-title{font-size:13px;font-weight:800}
+.preview-actions{display:flex;gap:6px;flex-wrap:wrap}
+.preview-actions button{width:auto;min-height:34px;padding:0 10px;font-size:11px}
+.preview-table-wrap{max-height:240px;overflow:auto}
+.status-badge{display:inline-flex;align-items:center;justify-content:center;padding:4px 8px;border-radius:999px;font-size:10px;border:1px solid var(--line)}
+.status-valid{background:rgba(15,118,110,.10);color:var(--ok);border-color:rgba(15,118,110,.20)}
+.status-warning{background:rgba(245,158,11,.12);color:#b45309;border-color:rgba(245,158,11,.25)}
+.status-invalid{background:rgba(185,28,28,.10);color:var(--danger);border-color:rgba(185,28,28,.20)}
+.preview-edit-input{min-height:34px;border-radius:10px;padding:0 8px;font-size:13px}
+.diag-panel{margin-top:10px;border:1px dashed var(--line-strong);border-radius:14px;padding:10px;background:var(--bg-soft)}
+.diag-item{padding:6px 0;border-bottom:1px dashed var(--line)}
+.diag-item:last-child{border-bottom:0}
+.conf-badge{display:inline-flex;align-items:center;justify-content:center;padding:4px 8px;border-radius:999px;font-size:10px;background:var(--accent-soft);color:var(--accent);border:1px solid rgba(37,99,235,.15)}
+.bulk-edit-panel{display:grid;grid-template-columns:1fr 1fr auto auto auto;gap:8px;align-items:end;margin-bottom:8px}
+.bulk-edit-panel .mini-action{min-height:36px}
+@media (max-width:720px){.bulk-edit-panel{grid-template-columns:1fr 1fr}.bulk-edit-panel .mini-action{grid-column:span 1}}
+.compact-row{grid-template-columns:34px 54px 1fr 1fr auto}
+.compact-row .sel-wrap{display:flex;align-items:center;justify-content:center}
+.compact-row input.row-select{width:18px;height:18px;min-height:auto}
+.analysis-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+@media (max-width:700px){.analysis-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.analysis-card{border:1px solid var(--line);border-radius:15px;padding:10px;background:linear-gradient(180deg,var(--card-strong),var(--bg-soft))}
+.analysis-card .k{font-size:10px;color:var(--muted)}
+.analysis-card .v{font-size:18px;font-weight:800;margin-top:6px}
+.subsection-title{font-size:12px;font-weight:800;margin:10px 0 8px}
+.test-panel{margin-top:10px;border:1px solid var(--line);border-radius:14px;padding:10px;background:linear-gradient(180deg,var(--card-strong),var(--bg-soft))}
+.test-result-pass{color:var(--ok)} .test-result-fail{color:var(--danger)}
+
+
 
 .search-wrap{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
 .icon-input{position:relative;max-width:240px;width:100%}
@@ -242,6 +258,8 @@ canvas{width:100%;height:220px;border:1px solid var(--line);border-radius:14px;b
           <div class="c4"><label>تاریخ مبدا</label><input id="originDate" value="14041220"></div>
           <div class="c2"><label>نرخ (%)</label><input id="monthlyRate" value="6"></div>
           <div class="c2"><label>ماه</label><select id="monthBase"><option value="30" selected>30</option><option value="31">31</option></select></div>
+          <div class="c4"><label>مدل ارزش روز صفر</label><select id="pvMethod"><option value="simple" selected>تنزیل ساده خطی</option><option value="exact">مدل دقیق ردیف‌به‌ردیف</option></select></div>
+          <div class="c8"><label>برچسب‌ها</label><input id="dealTags" placeholder="مثلاً سرمایه‌گذار الف، تارا، فوری"></div>
           <div class="c12"><label>یادداشت</label><input id="dealNote" placeholder="اختیاری"></div>
         </div>
       </div>
@@ -257,48 +275,35 @@ canvas{width:100%;height:220px;border:1px solid var(--line);border-radius:14px;b
             <button class="btn secondary" onclick="parseTextToChecks()">استخراج</button>
             <button class="btn secondary" onclick="appendParsedChecks()">افزودن به لیست</button>
             <button class="btn secondary" onclick="replaceWithParsedChecks()">جایگزینی لیست</button>
-            <button class="btn secondary" onclick="runAutoTests()">تست خودکار</button>
             <button class="btn danger" onclick="clearBulkText()">پاک کردن متن</button>
           </div></div>
           <div class="c12"><div id="parseSummary" class="status-strip"><span class="mini">هنوز متنی پردازش نشده است.</span></div></div>
           <div class="c12">
-            <div class="preview-panel" id="previewPanel" style="display:none">
+            <div id="previewPanel" class="preview-panel" style="display:none">
               <div class="preview-head">
                 <div>
-                  <div class="title">پیش‌نمایش قبل از ثبت</div>
-                  <div class="meta">موارد استخراج‌شده قبل از ورود به لیست اصلی</div>
+                  <div class="preview-title">پیش‌نمایش استخراج</div>
+                  <div id="previewMeta" class="mini">هنوز موردی استخراج نشده است.</div>
                 </div>
-                <div class="badge" id="previewCountBadge">0 مورد</div>
+                <div class="preview-actions">
+                  <button class="btn secondary tiny" onclick="approveValidParsedChecks(false)">افزودن موارد معتبر</button>
+                  <button class="btn secondary tiny" onclick="approveValidParsedChecks(true)">جایگزینی با موارد معتبر</button>
+                  <button class="btn secondary tiny" onclick="removeSuspiciousParsedChecks()">رد موارد مشکوک</button>
+                  <button class="btn secondary tiny" onclick="approveAllParsedChecks(false)">تأیید همه</button>
+                </div>
               </div>
-              <div class="preview-body">
-                <div class="preview-table-wrap">
-                  <table class="preview-table">
-                    <thead><tr><th>ردیف</th><th>مبلغ</th><th>تاریخ</th><th>وضعیت</th><th>عملیات</th></tr></thead>
-                    <tbody id="previewTableBody"></tbody>
-                  </table>
-                </div>
-                <div id="previewEmpty" class="preview-empty">هنوز پیش‌نمایشی ساخته نشده است.</div>
-                <div class="mini" style="margin-top:8px">ابتدا استخراج کن، در صورت نیاز مبلغ یا تاریخ را همین‌جا اصلاح کن، سپس «افزودن به لیست» یا «جایگزینی لیست» را بزن.</div>
+              <div class="preview-table-wrap">
+                <table id="previewTable">
+                  <thead><tr><th>ردیف</th><th>مبلغ</th><th>تاریخ</th><th>نوع تشخیص</th><th>وضعیت</th><th>اطمینان</th><th>عملیات</th></tr></thead>
+                  <tbody></tbody>
+                </table>
               </div>
             </div>
           </div>
           <div class="c12">
-            <div class="test-panel" id="testPanel" style="display:none">
-              <div class="test-head">
-                <div>
-                  <div class="title">نتایج تست خودکار سناریوها</div>
-                  <div class="meta">بررسی parsing و محاسبات روی سناریوهای واقعی</div>
-                </div>
-                <div class="badge" id="testSummaryBadge">-</div>
-              </div>
-              <div class="test-body">
-                <div class="test-table-wrap">
-                  <table>
-                    <thead><tr><th>سناریو</th><th>نتیجه</th><th>توضیح</th></tr></thead>
-                    <tbody id="testTableBody"></tbody>
-                  </table>
-                </div>
-              </div>
+            <div id="diagnosticPanel" class="diag-panel" style="display:none">
+              <div class="preview-title">خطایابی هوشمند ورودی متن</div>
+              <div id="diagnosticBody" class="mini" style="margin-top:8px"></div>
             </div>
           </div>
         </div>
@@ -308,13 +313,20 @@ canvas{width:100%;height:220px;border:1px solid var(--line);border-radius:14px;b
         <div class="head"><div><div class="title">چک‌ها</div><div class="meta">ورود جمع‌وجور</div></div><div class="tabs"><button class="tab-btn active" data-tab="paneRows">ورود</button><button class="tab-btn" data-tab="paneDetails">جزئیات</button></div></div>
         <div id="paneRows" class="pane active">
           <div class="toolbar" style="margin-bottom:8px"><button class="btn secondary" onclick="addRow()">افزودن چک</button><button class="btn secondary" onclick="loadDemo()">نمونه</button><button class="btn danger" onclick="clearRows()">پاک‌کردن</button></div>
+          <div class="bulk-edit-panel">
+            <div><label>تاریخ برای منتخب‌ها</label><input id="bulkDateInput" placeholder="14050220"></div>
+            <div><label>مبلغ برای منتخب‌ها</label><input id="bulkAmountInput" placeholder="189"></div>
+            <button class="btn secondary mini-action" onclick="applyBulkDate()">اعمال تاریخ</button>
+            <button class="btn secondary mini-action" onclick="applyBulkAmount()">اعمال مبلغ</button>
+            <button class="btn danger mini-action" onclick="deleteSelectedRows()">حذف منتخب‌ها</button>
+          </div>
           <div id="rows" class="rows"></div>
         </div>
         <div id="paneDetails" class="pane"><div class="scroll"><table id="detailsTable"><thead><tr><th>ردیف</th><th>مبلغ</th><th>تاریخ</th><th>روز</th><th>وزن</th><th>ارزش روز صفر</th><th>تنزیل</th></tr></thead><tbody></tbody></table></div></div>
       </div>
 
       <div class="card">
-        <div class="head"><div><div class="title">خروجی</div><div class="meta">هماهنگ با طراحی کلی</div></div><div class="tabs"><button class="tab-btn active" data-tab="paneSummary">خلاصه</button><button class="tab-btn" data-tab="paneChart">نمودار</button><button class="tab-btn" data-tab="paneCompare">مقایسه</button></div></div>
+        <div class="head"><div><div class="title">خروجی</div><div class="meta">هماهنگ با طراحی کلی</div></div><div class="tabs"><button class="tab-btn active" data-tab="paneSummary">خلاصه</button><button class="tab-btn" data-tab="paneChart">نمودار</button><button class="tab-btn" data-tab="paneAnalysis">تحلیل</button><button class="tab-btn" data-tab="paneCompare">مقایسه</button><button class="tab-btn" data-tab="paneReverse">ماشین‌حساب معکوس</button></div></div>
         <div id="paneSummary" class="pane active"><div id="resultArea" style="display:none"><div class="summary">
           <div class="kpi clickable" onclick="showKpiInfo('sumFace')"><div class="k">جمع مبلغ اسمی</div><div class="v" id="sumFace">0</div></div>
           <div class="kpi clickable" onclick="showKpiInfo('weightedDays')"><div class="k">راس وزنی (روز)</div><div class="v" id="weightedDays">0</div></div>
@@ -328,6 +340,21 @@ canvas{width:100%;height:220px;border:1px solid var(--line);border-radius:14px;b
           <div class="kpi clickable" onclick="showKpiInfo('checksCount')"><div class="k">تعداد چک</div><div class="v" id="checksCount">0</div></div>
         </div><div class="mini" style="margin-top:8px">عدد معادل راس = عددی که اگر با فرمول ساده «اصل + اصل × نرخ ÷ ۳۰ × راس وزنی» محاسبه شود، به جمع مبلغ اسمی برسد.</div></div></div>
         <div id="paneChart" class="pane"><canvas id="chartCanvas" width="900" height="260"></canvas></div>
+        <div id="paneAnalysis" class="pane">
+          <div class="analysis-grid">
+            <div class="analysis-card"><div class="k">میانگین مبلغ چک</div><div class="v" id="avgAmountKpi">0</div></div>
+            <div class="analysis-card"><div class="k">بیشترین فاصله زمانی</div><div class="v" id="maxDaysKpi">0</div></div>
+            <div class="analysis-card"><div class="k">کمترین فاصله زمانی</div><div class="v" id="minDaysKpi">0</div></div>
+            <div class="analysis-card"><div class="k">بیشترین سهم از راس</div><div class="v" id="topWeightShareKpi">0%</div></div>
+            <div class="analysis-card"><div class="k">ارزش روز صفر ساده</div><div class="v" id="simplePvKpi">0</div></div>
+            <div class="analysis-card"><div class="k">ارزش روز صفر دقیق</div><div class="v" id="exactPvKpi">0</div></div>
+            <div class="analysis-card"><div class="k">اختلاف دو مدل</div><div class="v" id="pvModelDiffKpi">0</div></div>
+            <div class="analysis-card"><div class="k">بزرگ‌ترین چک</div><div class="v" id="maxAmountKpi">0</div></div>
+          </div>
+          <div class="subsection-title">سهم هر چک از راس</div>
+          <div class="scroll"><table id="analysisTable"><thead><tr><th>ردیف</th><th>مبلغ</th><th>روز</th><th>وزن</th><th>سهم از راس</th></tr></thead><tbody></tbody></table></div>
+        </div>
+
         <div id="paneCompare" class="pane"><div class="compare-box">
           <div class="compare-card"><div class="head"><div class="title">سناریو A</div><div class="meta">معامله فعلی</div></div><div id="compareA" class="mini">هنوز محاسبه نشده</div></div>
           <div class="compare-card"><div class="head"><div class="title">سناریو B</div><div class="meta">ورود دستی</div></div><div class="form">
@@ -339,6 +366,18 @@ canvas{width:100%;height:220px;border:1px solid var(--line);border-radius:14px;b
             <div class="c12"><div id="compareBox" class="mini">مقداری وارد نشده</div></div>
           </div></div>
         </div></div>
+        <div id="paneReverse" class="pane">
+          <div class="compare-card">
+            <div class="head"><div class="title">ماشین‌حساب معکوس مستقل</div><div class="meta">بدون وارد کردن چک‌ها</div></div>
+            <div class="form">
+              <div class="c4"><label>جمع مبلغ اسمی</label><input id="revFace" placeholder="3242"></div>
+              <div class="c4"><label>نرخ ماهانه (%)</label><input id="revRate" placeholder="6"></div>
+              <div class="c4"><label>راس (روز)</label><input id="revDays" placeholder="376"></div>
+              <div class="c12"><button class="btn secondary" onclick="runReverseCalc()">محاسبه</button></div>
+              <div class="c12"><div id="reverseBox" class="mini">هنوز محاسبه نشده</div></div>
+            </div>
+          </div>
+        </div>
         <div style="margin-top:8px"><label>گزارش متنی</label><textarea id="reportBox" readonly></textarea></div>
       </div>
     </div>
@@ -347,8 +386,8 @@ canvas{width:100%;height:220px;border:1px solid var(--line);border-radius:14px;b
       </div>
 
       <div class="card">
-        <div class="head"><div><div class="title">هیستوری معاملات</div><div class="meta">قابل اعتماد و جست‌وجوپذیر</div></div><div class="search-wrap"><div class="icon-input"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><input id="historySearch" placeholder="جست‌وجو"></div></div></div>
-        <div class="toolbar" style="margin-bottom:8px"><button class="btn secondary" onclick="exportHistory()">خروجی هیستوری</button><button class="btn danger" onclick="clearHistory()">پاک‌کردن</button><button class="btn secondary" onclick="renderHistory()">بروزرسانی</button></div>
+        <div class="head"><div><div class="title">هیستوری معاملات</div><div class="meta">قابل اعتماد و جست‌وجوپذیر</div></div><div class="search-wrap"><div class="icon-input"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><input id="historySearch" placeholder="جست‌وجو"></div><select id="historyMethodFilter" style="max-width:180px"><option value="">همه مدل‌ها</option><option value="simple">تنزیل ساده</option><option value="exact">مدل دقیق</option></select></div></div>
+        <div class="toolbar" style="margin-bottom:8px"><button class="btn secondary" onclick="exportHistory()">خروجی هیستوری</button><button class="btn secondary" onclick="printReport()">چاپ / PDF</button><button class="btn danger" onclick="clearHistory()">پاک‌کردن</button><button class="btn secondary" onclick="renderHistory()">بروزرسانی</button></div>
         <div id="historyList" class="history"></div>
       </div>
     </div>
@@ -357,7 +396,7 @@ canvas{width:100%;height:220px;border:1px solid var(--line);border-radius:14px;b
 
 <script>
 let lastResult=null, parsedChecksBuffer=[];
-const HISTORY_KEY='check_discount_history_v23', DRAFT_KEY='check_discount_draft_v23', THEME_KEY='check_discount_theme_v23';
+const HISTORY_KEY='check_discount_history_v24', DRAFT_KEY='check_discount_draft_v24', THEME_KEY='check_discount_theme_v24';
 
 function faToEn(str){ const fa='۰۱۲۳۴۵۶۷۸۹', ar='٠١٢٣٤٥٦٧٨٩'; return String(str||'').split('').map(ch=>fa.includes(ch)?String(fa.indexOf(ch)):ar.includes(ch)?String(ar.indexOf(ch)):ch==='٬'?'':ch).join(''); }
 function onlyDigits(s){ return faToEn(s).replace(/\D/g,''); }
@@ -398,11 +437,34 @@ function clearBulkText(){
   box.value='';
   parsedChecksBuffer=[];
   document.getElementById('parseSummary').innerHTML='<span class="mini">متن خام پاک شد.</span>';
-  document.getElementById('previewPanel').style.display='none';
+  renderPreviewPanel();
   saveDraft();
   box.focus();
 }
 
+
+function normalizePossibleDateToken(raw){
+  const d = onlyDigits(raw);
+  if(d.length===8) return d;
+  if(d.length===6){
+    const yy = Number(d.slice(0,2));
+    const prefix = yy <= 50 ? '14' : '13';
+    return prefix + d;
+  }
+  return d;
+}
+function analyzeParsedItem(amountToman, date8, sourceType){
+  const originalDate = String(date8||'');
+  const normalizedDate = normalizePossibleDateToken(originalDate);
+  let status='valid', reason='';
+  if(!(amountToman>0)){ status='invalid'; reason='مبلغ نامعتبر'; }
+  if(status!=='invalid'){
+    try{ parseJalaliFast(normalizedDate); }catch(e){ status='invalid'; reason='تاریخ نامعتبر'; }
+  }
+  if(status==='valid' && (amountToman < 1000000 || amountToman > 100000000000)){ status='warning'; reason='مبلغ غیرمعمول'; }
+  if(status==='valid' && originalDate.length===6){ status='warning'; reason='سال دو رقمی تشخیص داده شد'; }
+  return {amountToman, date8:normalizedDate, sourceType, status, reason};
+}
 function preprocessRichText(text){
   let t=faToEn(text);
   t=t.replace(/<div[^>]*>/gi,'\n').replace(/<\/div>/gi,'').replace(/<br\s*\/?>/gi,'\n');
@@ -437,7 +499,7 @@ function parseMarkdownTables(text){
       if(row.every(cell=>/^[-–—:\s]+$/.test(cell))) continue;
       const amountCell=row[amountIdx], dateCell=row[dateIdx];
       if(!amountCell || !dateCell) continue;
-      const date8=onlyDigits(dateCell);
+      const date8=normalizePossibleDateToken(dateCell);
       if(date8.length!==8) continue;
       try{ parseJalaliFast(date8); }catch(e){ continue; }
       let amountToman;
@@ -472,7 +534,7 @@ function parseStructuredTableText(text){
       const row=values.slice(i,i+headerLines.length);
       const dateCell=row[dateIdx] || '';
       const amountCell=row[amountIdx] || '';
-      const date8=onlyDigits(dateCell);
+      const date8=normalizePossibleDateToken(dateCell);
       if(date8.length!==8) continue;
       try{ parseJalaliFast(date8); }catch(e){ continue; }
       let amountToman;
@@ -504,9 +566,9 @@ function parseLinePairsText(text){
   const out=[];
   lines.forEach(line=>{
     if(/^جمع\b/i.test(line) || /مبدا/i.test(line) || /راس/i.test(line) && !/تاریخ/.test(line)) return;
-    const dateMatch=line.match(/14\d{2}[\/\-]?\d{2}[\/\-]?\d{2}/);
+    const dateMatch=line.match(/(?:14\d{2}|\d{2})[\/\-]?\d{2}[\/\-]?\d{2}/);
     if(!dateMatch) return;
-    const date8=onlyDigits(dateMatch[0]);
+    const date8=normalizePossibleDateToken(dateMatch[0]);
     if(date8.length!==8) return;
     let amountRaw=null;
 
@@ -515,7 +577,7 @@ function parseLinePairsText(text){
 
     if(!amountRaw){
       // direct compact forms like "120م 14050527" or "150مت تاریخ 14050727"
-      m=line.match(/(^|\s)([0-9.,]+(?:\s*(?:م|مت|میلیون|تومان|تومن|ریال))?)(?=\s+14\d{2})/i);
+      m=line.match(/(^|\s)([0-9.,]+(?:\s*(?:م|مت|میلیون|تومان|تومن|ریال))?)(?=\s+(?:14\d{2}|\d{2}))/i);
       if(m && m[2]) amountRaw=m[2];
     }
 
@@ -544,9 +606,9 @@ function parseMultiDateBlocks(text){
       continue;
     }
     if(pendingAmount){
-      const dateOnly=line.match(/^14\d{2}[\/\-]?\d{2}[\/\-]?\d{2}$/);
+      const dateOnly=line.match(/^(?:14\d{2}|\d{2})[\/\-]?\d{2}[\/\-]?\d{2}$/);
       if(dateOnly){
-        const date8=onlyDigits(dateOnly[0]);
+        const date8=normalizePossibleDateToken(dateOnly[0]);
         if(date8.length===8) out.push({amountToman:pendingAmount,date8});
         continue;
       }
@@ -558,8 +620,8 @@ function parseMultiDateBlocks(text){
 }
 
 function extractDateCandidates(text){
-  const all=preprocessRichText(text), out=[], rx=/14\d{2}[\/\-]?\d{2}[\/\-]?\d{2}/g; let m;
-  while((m=rx.exec(all))!==null){ const d=onlyDigits(m[0]); if(d.length===8) out.push({date8:d,index:m.index}); }
+  const all=preprocessRichText(text), out=[], rx=/(?:14\d{2}|\d{2})[\/\-]?\d{2}[\/\-]?\d{2}/g; let m;
+  while((m=rx.exec(all))!==null){ const d=normalizePossibleDateToken(m[0]); if(d.length===8) out.push({date8:d,index:m.index}); }
   return out;
 }
 function parseFreeText(text){
@@ -583,12 +645,20 @@ function parseFreeText(text){
 }
 
 
-function extractChecksFromText(text){
-  const mdTables=parseMarkdownTables(text);
-  const seqTables=mdTables.length?[]:parseStructuredTableText(text);
-  const lineItems=(mdTables.length||seqTables.length)?[]:parseLinePairsText(text);
-  const blockItems=(mdTables.length||seqTables.length||lineItems.length)?[]:parseMultiDateBlocks(text);
-  const freeItems=(mdTables.length||seqTables.length||lineItems.length||blockItems.length)?[]:parseFreeText(text);
+function parseTextToChecks(){
+  const text=document.getElementById('bulkText').value||'';
+  if(!text.trim()){
+    parsedChecksBuffer=[];
+    document.getElementById('parseSummary').innerHTML='<span class="mini">متن خالی است.</span>';
+    renderPreviewPanel();
+    return;
+  }
+
+  const mdTables=parseMarkdownTables(text).map(x=>analyzeParsedItem(x.amountToman,x.date8,'جدول مارک‌داون'));
+  const seqTables=mdTables.length?[]:parseStructuredTableText(text).map(x=>analyzeParsedItem(x.amountToman,x.date8,'جدول خطی'));
+  const lineItems=(mdTables.length||seqTables.length)?[]:parseLinePairsText(text).map(x=>analyzeParsedItem(x.amountToman,x.date8,'خطی'));
+  const blockItems=(mdTables.length||seqTables.length||lineItems.length)?[]:parseMultiDateBlocks(text).map(x=>analyzeParsedItem(x.amountToman,x.date8,'بلوکی'));
+  const freeItems=(mdTables.length||seqTables.length||lineItems.length||blockItems.length)?[]:parseFreeText(text).map(x=>analyzeParsedItem(x.amountToman,x.date8,'متن آزاد'));
 
   let mode='متن آزاد';
   if(mdTables.length) mode='جدول مارک‌داون';
@@ -596,205 +666,131 @@ function extractChecksFromText(text){
   else if(lineItems.length) mode='خطی تاریخ/مبلغ';
   else if(blockItems.length) mode='بلوک چندتاریخی';
 
-  const items=dedupeChecks(mdTables.length?mdTables:(seqTables.length?seqTables:(lineItems.length?lineItems:(blockItems.length?blockItems:freeItems))));
-  return {items, mode};
-}
-function renderPreview(){
-  const panel=document.getElementById('previewPanel');
-  const body=document.getElementById('previewTableBody');
-  const empty=document.getElementById('previewEmpty');
-  const badge=document.getElementById('previewCountBadge');
-  if(!parsedChecksBuffer.length){
-    panel.style.display='block';
-    body.innerHTML='';
-    empty.style.display='block';
-    badge.textContent='0 مورد';
-    return;
-  }
-  panel.style.display='block';
-  empty.style.display='none';
-  badge.textContent=parsedChecksBuffer.length+' مورد';
-  body.innerHTML=parsedChecksBuffer.map((x,i)=>`
-    <tr>
-      <td>${i+1}</td>
-      <td><input data-preview-field="amount" data-index="${i}" value="${toMillionInputFromToman(x.amountToman)}"></td>
-      <td><input data-preview-field="date" data-index="${i}" value="${x.date8}"></td>
-      <td><span class="badge ok">معتبر</span></td>
-      <td><button class="btn danger tiny" onclick="deletePreviewRow(${i})">حذف</button></td>
-    </tr>
-  `).join('');
-}
-function deletePreviewRow(i){
-  parsedChecksBuffer.splice(i,1);
-  renderPreview();
-  saveDraft();
-}
-function syncPreviewBuffer(){
-  const amountInputs=[...document.querySelectorAll('[data-preview-field="amount"]')];
-  const dateInputs=[...document.querySelectorAll('[data-preview-field="date"]')];
-  const next=[];
-  for(let i=0;i<amountInputs.length;i++){
-    const amountRaw=amountInputs[i].value;
-    const dateRaw=dateInputs[i].value;
-    try{
-      const amountToman=amountInputToToman(amountRaw);
-      const date8=normalizeDateInput(dateRaw);
-      parseJalaliFast(date8);
-      next.push({amountToman,date8});
-    }catch(e){}
-  }
-  parsedChecksBuffer=next;
-  renderPreview();
-}
-function buildItemsFromRawPairs(pairs){
-  return pairs.map(p=>({amount:p.amount*1000000,date8:p.date,jdn:parseJalaliFast(p.date).jdn}));
-}
-function calcSummaryFromPairs(pairs, originDate, monthlyRatePercent, monthBase){
-  const origin=parseJalaliFast(originDate);
-  const monthlyRate=monthlyRatePercent/100;
-  let totalFace=0,totalWeight=0,totalPV=0;
-  for(const p of pairs){
-    const days=p.jdn-origin.jdn;
-    const amount=p.amount;
-    const discount=amount*(monthlyRate/monthBase)*days;
-    const pv=amount-discount;
-    totalFace+=amount; totalWeight+=amount*days; totalPV+=pv;
-  }
-  return {totalFace, weightedDays: totalWeight/totalFace, totalPV};
-}
-function runAutoTests(){
-  const cases = [
-    {
-      name:'خطی ساده تاریخ/مبلغ',
-      run:()=>{
-        const txt='تاریخ 14041223 مبلغ 74\nتاریخ 14041223 مبلغ 26\nتاریخ 14041224 مبلغ 200';
-        const res=extractChecksFromText(txt).items;
-        const ok = res.length===3 && toMillionInputFromToman(res[0].amountToman)==='74' && res[2].date8==='14041224';
-        return {ok, detail:'انتظار: 3 مورد با مبالغ 74، 26، 200'};
-      }
-    },
-    {
-      name:'جدول خطی با ستون شماره چک',
-      run:()=>{
-        const txt='ردیف\nشماره چک\nتاریخ چک\nمبلغ (میلیون تومان)\nدر وجه\n1\n295794\n1405/03/13\n25\nالف\n2\n243518\n1405/07/02\n87\nب';
-        const res=extractChecksFromText(txt).items;
-        const ok = res.length===2 && toMillionInputFromToman(res[0].amountToman)==='25' && toMillionInputFromToman(res[1].amountToman)==='87';
-        return {ok, detail:'نباید شماره چک به‌جای مبلغ خوانده شود'};
-      }
-    },
-    {
-      name:'جدول چندستونه با ردیف نامشخص',
-      run:()=>{
-        const txt='ردیف\nتاریخ\nمبلغ (میلیون تومان)\nطرف حساب\nشرح\n1\n1404/12/25\n97.5\nالف\nشرح\n2\nنامشخص\n20\nب\nشرح';
-        const res=extractChecksFromText(txt).items;
-        const ok = res.length===1 && toMillionInputFromToman(res[0].amountToman)==='97.5';
-        return {ok, detail:'ردیف با تاریخ نامشخص باید حذف شود'};
-      }
-    },
-    {
-      name:'خط فشرده مبلغ سپس تاریخ',
-      run:()=>{
-        const txt='120م 14050527\n150مت تاریخ 14050727';
-        const res=extractChecksFromText(txt).items;
-        const ok = res.length===2 && toMillionInputFromToman(res[0].amountToman)==='120' && res[1].date8==='14050727';
-        return {ok, detail:'الگوهای فشرده باید parse شوند'};
-      }
-    },
-    {
-      name:'بلوک چندتاریخی',
-      run:()=>{
-        const txt='4 فقره چک به مبلغ 189م به تاریخ های\n14050527\n14050627\n14050727';
-        const res=extractChecksFromText(txt).items;
-        const ok = res.length===3 && res.every(x=>toMillionInputFromToman(x.amountToman)==='189');
-        return {ok, detail:'یک مبلغ ثابت باید روی همه تاریخ‌ها اعمال شود'};
-      }
-    },
-    {
-      name:'محاسبه راس وزنی نمونه',
-      run:()=>{
-        const pairs=buildItemsFromRawPairs([
-          {amount:300, date:'14050616'},
-          {amount:260, date:'14050819'},
-          {amount:160, date:'14050910'},
-          {amount:50, date:'14050202'}
-        ]);
-        const s=calcSummaryFromPairs(pairs,'14050112',6,30);
-        const ok = Math.round(s.totalFace/1000000)===770 && Math.round(s.weightedDays)===176;
-        return {ok, detail:'جمع و راس وزنی باید در محدوده مورد انتظار باشند'};
-      }
-    }
-  ];
-  let pass=0;
-  const rows=cases.map(c=>{
-    try{
-      const r=c.run();
-      if(r.ok) pass++;
-      return `<tr><td>${c.name}</td><td><span class="badge ${r.ok?'ok':'bad'}">${r.ok?'PASS':'FAIL'}</span></td><td>${r.detail}</td></tr>`;
-    }catch(e){
-      return `<tr><td>${c.name}</td><td><span class="badge bad">ERROR</span></td><td>${e.message}</td></tr>`;
-    }
-  }).join('');
-  document.getElementById('testPanel').style.display='block';
-  document.getElementById('testTableBody').innerHTML=rows;
-  const badge=document.getElementById('testSummaryBadge');
-  badge.textContent=`${pass} / ${cases.length}`;
-  badge.className='badge ' + (pass===cases.length ? 'ok' : 'bad');
-}
-function parseTextToChecks(){
-  const text=document.getElementById('bulkText').value||'';
-  if(!text.trim()){
-    parsedChecksBuffer=[];
-    document.getElementById('parseSummary').innerHTML='<span class="mini">متن خالی است.</span>';
-    renderPreview();
-    return;
-  }
-
-  const result=extractChecksFromText(text);
-  parsedChecksBuffer=result.items;
+  parsedChecksBuffer=dedupeChecks(mdTables.length?mdTables:(seqTables.length?seqTables:(lineItems.length?lineItems:(blockItems.length?blockItems:freeItems))));
 
   if(!parsedChecksBuffer.length){
     document.getElementById('parseSummary').innerHTML='<span class="bad">چکی پیدا نشد.</span>';
-    renderPreview();
+    renderPreviewPanel();
     return;
   }
 
+  const validCount=parsedChecksBuffer.filter(x=>x.status==='valid').length;
+  const warnCount=parsedChecksBuffer.filter(x=>x.status==='warning').length;
+  const invalidCount=parsedChecksBuffer.filter(x=>x.status==='invalid').length;
+
   document.getElementById('parseSummary').innerHTML=
-    '<span class="ok">'+parsedChecksBuffer.length+' چک شناسایی شد</span>'+
-    '<span class="mini">'+result.mode+'</span>'+
-    '<span class="mini">'+parsedChecksBuffer.slice(0,5).map(x=>numFmt(x.amountToman,0)+' تومان - '+displayDate8(x.date8)).join(' | ')+'</span>';
-  renderPreview();
+    '<span class="ok">'+parsedChecksBuffer.length+' مورد شناسایی شد</span>'+
+    '<span class="mini">'+mode+'</span>'+
+    '<span class="mini">معتبر: '+validCount+' | مشکوک: '+warnCount+' | ردشده: '+invalidCount+'</span>';
+  renderPreviewPanel();
 }
-function appendParsedChecks(){ if(!parsedChecksBuffer.length) parseTextToChecks(); syncPreviewBuffer(); if(!parsedChecksBuffer.length) return; parsedChecksBuffer.forEach(x=>createRow(toMillionInputFromToman(x.amountToman),x.date8)); saveDraft(); }
-function replaceWithParsedChecks(){ if(!parsedChecksBuffer.length) parseTextToChecks(); syncPreviewBuffer(); if(!parsedChecksBuffer.length) return; clearRows(); parsedChecksBuffer.forEach(x=>createRow(toMillionInputFromToman(x.amountToman),x.date8)); saveDraft(); }
+
+function getApprovedParsedChecks(includeWarnings=true){
+  return parsedChecksBuffer.filter(x=>x.status==='valid' || (includeWarnings && x.status==='warning'));
+}
+function approveAllParsedChecks(replaceAll){
+  const items=parsedChecksBuffer.filter(x=>x.status!=='invalid');
+  if(!items.length) return;
+  if(replaceAll) clearRows();
+  items.forEach(x=>createRow(toMillionInputFromToman(x.amountToman),x.date8));
+  saveDraft();
+}
+function approveValidParsedChecks(replaceAll){
+  const items=getApprovedParsedChecks(true);
+  if(!items.length) return;
+  if(replaceAll) clearRows();
+  items.forEach(x=>createRow(toMillionInputFromToman(x.amountToman),x.date8));
+  saveDraft();
+}
+function removeSuspiciousParsedChecks(){
+  parsedChecksBuffer=parsedChecksBuffer.filter(x=>x.status==='valid');
+  renderPreviewPanel();
+}
+function appendParsedChecks(){ approveValidParsedChecks(false); }
+function replaceWithParsedChecks(){ approveValidParsedChecks(true); }
+function editPreviewItem(idx, field, value){
+  if(!parsedChecksBuffer[idx]) return;
+  if(field==='amount'){
+    const toman=parseMoneyRawToToman(value+' میلیون', null);
+    parsedChecksBuffer[idx].amountToman=toman;
+  }else if(field==='date'){
+    parsedChecksBuffer[idx].date8=normalizePossibleDateToken(value);
+  }
+  parsedChecksBuffer[idx]=analyzeParsedItem(parsedChecksBuffer[idx].amountToman, parsedChecksBuffer[idx].date8, parsedChecksBuffer[idx].sourceType);
+  renderPreviewPanel();
+}
+function deletePreviewItem(idx){
+  parsedChecksBuffer.splice(idx,1);
+  renderPreviewPanel();
+}
+function renderPreviewPanel(){
+  const panel=document.getElementById('previewPanel');
+  const tbody=document.querySelector('#previewTable tbody');
+  const meta=document.getElementById('previewMeta');
+  if(!parsedChecksBuffer.length){
+    panel.style.display='none';
+    tbody.innerHTML='';
+    meta.textContent='هنوز موردی استخراج نشده است.';
+    return;
+  }
+  panel.style.display='block';
+  const validCount=parsedChecksBuffer.filter(x=>x.status==='valid').length;
+  const warnCount=parsedChecksBuffer.filter(x=>x.status==='warning').length;
+  const invalidCount=parsedChecksBuffer.filter(x=>x.status==='invalid').length;
+  meta.textContent='معتبر: '+validCount+' | مشکوک: '+warnCount+' | ردشده: '+invalidCount;
+  tbody.innerHTML=parsedChecksBuffer.map((item,idx)=>{
+    const statusClass=item.status==='valid'?'status-valid':item.status==='warning'?'status-warning':'status-invalid';
+    const statusText=item.status==='valid'?'معتبر':item.status==='warning'?'مشکوک':'رد شده';
+    const amountVal=item.amountToman?(item.amountToman/1000000):'';
+    const reason=item.reason?'<div class="mini">'+item.reason+'</div>':'';
+    return `<tr>
+      <td>${idx+1}</td>
+      <td><input class="preview-edit-input" value="${amountVal}" oninput="editPreviewItem(${idx},'amount',this.value)"></td>
+      <td><input class="preview-edit-input" value="${item.date8||''}" oninput="editPreviewItem(${idx},'date',this.value)"></td>
+      <td>${item.sourceType||'-'}</td>
+      <td><span class="status-badge ${statusClass}">${statusText}</span>${reason}</td>
+      <td><button class="btn danger tiny" onclick="deletePreviewItem(${idx})">حذف</button></td>
+    </tr>`;
+  }).join('');
+}
+
 
 function attachInputBehavior(inp,type){ inp.addEventListener('blur',()=>{ if(type==='amount'&&inp.value.trim()) inp.value=prettyMillionInput(inp.value); saveDraft(); }); inp.addEventListener('input',saveDraft); }
+
 function createRow(amount='',date=''){
   const idx=document.querySelectorAll('.compact-row').length+1;
   const div=document.createElement('div'); div.className='compact-row';
-  div.innerHTML=`<div><div class="label" style="font-size:10px;color:var(--muted);margin-bottom:3px">ردیف</div><div class="row-index">${idx}</div></div>
+  div.innerHTML=`<div class="sel-wrap"><input type="checkbox" class="row-select"></div><div><div class="label" style="font-size:10px;color:var(--muted);margin-bottom:3px">ردیف</div><div class="row-index">${idx}</div></div>
   <div class="field"><div class="label">مبلغ</div><input class="amount" value="${amount}" placeholder="189"></div>
   <div class="field"><div class="label">تاریخ</div><input class="date" value="${date}" placeholder="14050220"></div>
   <div style="display:flex;align-items:end"><button class="btn danger tiny" onclick="removeRow(this)">حذف</button></div>`;
   document.getElementById('rows').appendChild(div);
   attachInputBehavior(div.querySelector('.amount'),'amount');
   attachInputBehavior(div.querySelector('.date'),'date');
+  div.querySelector('.row-select').addEventListener('change', saveDraft);
   refreshIndices();
 }
 function refreshIndices(){ document.querySelectorAll('.compact-row').forEach((row,i)=>row.querySelector('.row-index').textContent=i+1); }
 function removeRow(btn){ btn.closest('.compact-row').remove(); refreshIndices(); saveDraft(); }
+function getSelectedRows(){ return [...document.querySelectorAll('.compact-row')].filter(r=>r.querySelector('.row-select')?.checked); }
+function applyBulkDate(){ const v=document.getElementById('bulkDateInput').value.trim(); if(!v) return; getSelectedRows().forEach(r=>r.querySelector('.date').value=onlyDigits(v)); saveDraft(); }
+function applyBulkAmount(){ const v=document.getElementById('bulkAmountInput').value.trim(); if(!v) return; getSelectedRows().forEach(r=>r.querySelector('.amount').value=faToEn(v)); saveDraft(); }
+function deleteSelectedRows(){ getSelectedRows().forEach(r=>r.remove()); refreshIndices(); saveDraft(); }
 function addRow(){ createRow('',''); saveDraft(); }
-function clearRows(){ document.getElementById('rows').innerHTML=''; document.querySelector('#detailsTable tbody').innerHTML=''; document.getElementById('reportBox').value=''; document.getElementById('resultArea').style.display='none'; lastResult=null; saveDraft(); }
+function clearRows(){ document.getElementById('rows').innerHTML=''; document.querySelector('#detailsTable tbody').innerHTML=''; const at=document.querySelector('#analysisTable tbody'); if(at) at.innerHTML=''; document.getElementById('reportBox').value=''; document.getElementById('resultArea').style.display='none'; lastResult=null; saveDraft(); }
 function loadDemo(){ clearRows(); [['120','14050427'],['400','14050630'],['120','14050627'],['120','14050527']].forEach(x=>createRow(x[0],x[1])); saveDraft(); }
+
 
 function collectData(){
   const origin=parseJalaliFast(document.getElementById('originDate').value);
   const monthlyRate=Number(faToEn(document.getElementById('monthlyRate').value))/100;
   const monthBase=Number(document.getElementById('monthBase').value);
+  const pvMethod=document.getElementById('pvMethod').value;
   if(isNaN(monthlyRate)||monthlyRate<0) throw new Error('نرخ ماهانه نامعتبر است');
   const rows=[...document.querySelectorAll('.compact-row')];
   if(!rows.length) throw new Error('حداقل یک چک وارد کن');
   const items=rows.map((row,i)=>{ const amountToman=amountInputToToman(row.querySelector('.amount').value); const date=parseJalaliFast(row.querySelector('.date').value); return {index:i+1,amount:amountToman,date8:date.text,jdn:date.jdn}; });
-  return {origin,monthlyRate,monthBase,items};
+  return {origin,monthlyRate,monthBase,pvMethod,items};
 }
 function setProgress(v,txt){ document.getElementById('progressWrap').style.display='block'; document.getElementById('progressBar').value=v; document.getElementById('progressText').textContent=txt||'در حال پردازش...'; }
 function hideProgress(){ document.getElementById('progressWrap').style.display='none'; }
@@ -803,12 +799,22 @@ function calculate(){
     setProgress(5,'آماده‌سازی...');
     setTimeout(()=>{
       try{
-        const data=collectData(); let totalFace=0,totalWeight=0,totalPV=0; const details=[];
-        data.items.forEach((it,idx)=>{ const days=it.jdn-data.origin.jdn, weight=it.amount*days, discount=it.amount*(data.monthlyRate/data.monthBase)*days, pv=it.amount-discount; totalFace+=it.amount; totalWeight+=weight; totalPV+=pv; details.push({index:it.index,amount:it.amount,date8:it.date8,days,weight,pv,discount}); setProgress(10+Math.round(((idx+1)/data.items.length)*80),'ردیف '+(idx+1)+' از '+data.items.length); });
-        const weightedDays=totalWeight/totalFace, weightedDate=jdnToDate8(data.origin.jdn+weightedDays), totalDiscount=totalFace-totalPV, effectivePeriod=totalDiscount/totalPV, effectiveMonthly=weightedDays>0?(effectivePeriod*data.monthBase/weightedDays):0;
-        const simplePrincipal=totalFace/(1+(data.monthlyRate/data.monthBase)*weightedDays);
-        const principalVsPV=totalPV-simplePrincipal;
-        lastResult={name:document.getElementById('dealName').value.trim()||'بدون نام',note:document.getElementById('dealNote').value.trim(),originDate:data.origin.text,monthlyRatePercent:Number(faToEn(document.getElementById('monthlyRate').value)),monthBase:data.monthBase,totalFace,weightedDays,weightedDate,totalPV,totalDiscount,effectivePeriod,effectiveMonthly,simplePrincipal,principalVsPV,count:details.length,details};
+        const data=collectData(); let totalFace=0,totalWeight=0,totalPV=0,totalSimplePV=0,totalExactPV=0; const details=[];
+        data.items.forEach((it,idx)=>{
+          const days=it.jdn-data.origin.jdn, weight=it.amount*days;
+          const simpleDiscount=it.amount*(data.monthlyRate/data.monthBase)*days;
+          const simplePV=it.amount-simpleDiscount;
+          const exactPV=it.amount/(1+(data.monthlyRate/data.monthBase)*days);
+          const pv=data.pvMethod==='exact'?exactPV:simplePV;
+          const discount=it.amount-pv;
+          totalFace+=it.amount; totalWeight+=weight; totalPV+=pv; totalSimplePV+=simplePV; totalExactPV+=exactPV;
+          details.push({index:it.index,amount:it.amount,date8:it.date8,days,weight,pv,discount,simplePV,exactPV});
+          setProgress(10+Math.round(((idx+1)/data.items.length)*80),'ردیف '+(idx+1)+' از '+data.items.length);
+        });
+        const weightedDays=totalWeight/totalFace, weightedDate=jdnToDate8(data.origin.jdn+weightedDays), totalDiscount=totalFace-totalPV, effectivePeriod=totalPV?totalDiscount/totalPV:0, effectiveMonthly=weightedDays>0?(effectivePeriod*data.monthBase/weightedDays):0;
+        const simplePrincipal=totalFace/(1+(data.monthlyRate/data.monthBase)*weightedDays), principalVsPV=totalPV-simplePrincipal;
+        const avgAmount=details.length?totalFace/details.length:0, maxDays=Math.max(...details.map(d=>d.days)), minDays=Math.min(...details.map(d=>d.days)), maxAmount=Math.max(...details.map(d=>d.amount)), topWeight=Math.max(...details.map(d=>d.weight)), topWeightShare=totalWeight?topWeight/totalWeight:0;
+        lastResult={name:document.getElementById('dealName').value.trim()||'بدون نام',note:document.getElementById('dealNote').value.trim(),tags:document.getElementById('dealTags').value.trim(),originDate:data.origin.text,monthlyRatePercent:Number(faToEn(document.getElementById('monthlyRate').value)),monthBase:data.monthBase,pvMethod:data.pvMethod,totalFace,weightedDays,weightedDate,totalPV,totalDiscount,effectivePeriod,effectiveMonthly,simplePrincipal,principalVsPV,totalSimplePV,totalExactPV,avgAmount,maxDays,minDays,maxAmount,topWeightShare,count:details.length,details};
         renderResult(); saveDraft(); setProgress(100,'انجام شد'); setTimeout(hideProgress,250);
       }catch(e){ hideProgress(); alert(e.message||'خطا در محاسبه'); }
     },20);
@@ -828,15 +834,27 @@ function renderResult(){
   document.getElementById('principalVsPV').textContent=numFmt(lastResult.principalVsPV,0);
   document.getElementById('checksCount').textContent=String(lastResult.count);
   document.querySelector('#detailsTable tbody').innerHTML=lastResult.details.map(d=>`<tr><td>${d.index}</td><td>${numFmt(d.amount,0)}</td><td>${displayDate8(d.date8)}</td><td>${numFmt(d.days,0)}</td><td>${numFmt(d.weight,0)}</td><td>${numFmt(d.pv,0)}</td><td>${numFmt(d.discount,0)}</td></tr>`).join('');
+  document.getElementById('avgAmountKpi').textContent=numFmt(lastResult.avgAmount,0);
+  document.getElementById('maxDaysKpi').textContent=numFmt(lastResult.maxDays,0);
+  document.getElementById('minDaysKpi').textContent=numFmt(lastResult.minDays,0);
+  document.getElementById('topWeightShareKpi').textContent=numFmt(lastResult.topWeightShare*100,0)+'%';
+  document.getElementById('simplePvKpi').textContent=numFmt(lastResult.totalSimplePV,0);
+  document.getElementById('exactPvKpi').textContent=numFmt(lastResult.totalExactPV,0);
+  document.getElementById('pvModelDiffKpi').textContent=numFmt(lastResult.totalExactPV-lastResult.totalSimplePV,0);
+  document.getElementById('maxAmountKpi').textContent=numFmt(lastResult.maxAmount,0);
+  const totalWeight=lastResult.details.reduce((s,x)=>s+x.weight,0)||1;
+  document.querySelector('#analysisTable tbody').innerHTML=lastResult.details.map(d=>`<tr><td>${d.index}</td><td>${numFmt(d.amount,0)}</td><td>${numFmt(d.days,0)}</td><td>${numFmt(d.weight,0)}</td><td>${numFmt((d.weight/totalWeight)*100,0)}%</td></tr>`).join('');
   document.getElementById('reportBox').value=buildReport(lastResult);
   drawChart(lastResult);
-  document.getElementById('compareA').innerHTML='نام: <b>'+escapeHtml(lastResult.name)+'</b><br>جمع اسمی: '+numFmt(lastResult.totalFace,0)+'<br>عدد معادل راس: '+numFmt(lastResult.simplePrincipal,0)+'<br>ارزش روز صفر: '+numFmt(lastResult.totalPV,0)+'<br>جمع تنزیل: '+numFmt(lastResult.totalDiscount,0)+'<br>راس: '+numFmt(lastResult.weightedDays,0)+' روز';
+  document.getElementById('compareA').innerHTML='نام: <b>'+escapeHtml(lastResult.name)+'</b><br>مدل ارزش روز صفر: '+(lastResult.pvMethod==='exact'?'مدل دقیق':'تنزیل ساده')+'<br>جمع اسمی: '+numFmt(lastResult.totalFace,0)+'<br>عدد معادل راس: '+numFmt(lastResult.simplePrincipal,0)+'<br>ارزش روز صفر: '+numFmt(lastResult.totalPV,0)+'<br>جمع تنزیل: '+numFmt(lastResult.totalDiscount,0)+'<br>راس: '+numFmt(lastResult.weightedDays,0)+' روز';
 }
 function escapeHtml(s){ return String(s||'').replace(/[&<>"']/g,m=>({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' }[m])); }
 function buildReport(r){
   const lines=['نام معامله: '+r.name];
   if(r.note) lines.push('یادداشت: '+r.note);
+  if(r.tags) lines.push('برچسب‌ها: '+r.tags);
   lines.push('تاریخ مبدا: '+displayDate8(r.originDate));
+  lines.push('مدل ارزش روز صفر: '+(r.pvMethod==='exact'?'مدل دقیق ردیف‌به‌ردیف':'تنزیل ساده خطی'));
   lines.push('نرخ ماهانه: '+r.monthlyRatePercent+'%');
   lines.push('مبنای ماه: '+r.monthBase+' روز');
   lines.push('تعداد چک: '+r.count);
@@ -849,6 +867,9 @@ function buildReport(r){
   lines.push('نرخ مؤثر ماهانه: '+numFmt(r.effectiveMonthly*100,0)+'%');
   lines.push('عدد معادل راس: '+numFmt(r.simplePrincipal,0));
   lines.push('اختلاف عدد معادل راس با ارزش روز صفر: '+numFmt(r.principalVsPV,0));
+  lines.push('میانگین مبلغ چک: '+numFmt(r.avgAmount,0));
+  lines.push('بیشترین فاصله زمانی: '+numFmt(r.maxDays,0));
+  lines.push('کمترین فاصله زمانی: '+numFmt(r.minDays,0));
   lines.push('');
   r.details.forEach(d=>lines.push(`ردیف ${d.index} | مبلغ: ${numFmt(d.amount,0)} | تاریخ: ${displayDate8(d.date8)} | روز: ${numFmt(d.days,0)} | ارزش روز صفر: ${numFmt(d.pv,0)} | تنزیل: ${numFmt(d.discount,0)}`));
   return lines.join('\n');
@@ -881,19 +902,50 @@ function downloadTXT(){ if(!lastResult){ alert('اول محاسبه کن'); retu
 function copyReport(){ if(!lastResult){ alert('اول محاسبه کن'); return; } const text=buildReport(lastResult); if(navigator.clipboard&&navigator.clipboard.writeText){ navigator.clipboard.writeText(text).then(()=>alert('گزارش کپی شد')).catch(()=>fallbackCopy(text)); } else fallbackCopy(text); }
 function fallbackCopy(text){ const ta=document.createElement('textarea'); ta.value=text; document.body.appendChild(ta); ta.select(); document.execCommand('copy'); document.body.removeChild(ta); alert('گزارش کپی شد'); }
 
-function getDraftObject(){ const rows=[...document.querySelectorAll('.compact-row')].map(row=>({amount:faToEn(row.querySelector('.amount').value),date:onlyDigits(row.querySelector('.date').value)})); return {dealName:document.getElementById('dealName').value,dealNote:document.getElementById('dealNote').value,originDate:onlyDigits(document.getElementById('originDate').value),monthlyRate:document.getElementById('monthlyRate').value,monthBase:document.getElementById('monthBase').value,bulkText:document.getElementById('bulkText').value,rows}; }
+function getDraftObject(){ const rows=[...document.querySelectorAll('.compact-row')].map(row=>({amount:faToEn(row.querySelector('.amount').value),date:onlyDigits(row.querySelector('.date').value)})); return {dealName:document.getElementById('dealName').value,dealNote:document.getElementById('dealNote').value,dealTags:document.getElementById('dealTags').value,originDate:onlyDigits(document.getElementById('originDate').value),monthlyRate:document.getElementById('monthlyRate').value,monthBase:document.getElementById('monthBase').value,pvMethod:document.getElementById('pvMethod').value,bulkText:document.getElementById('bulkText').value,rows}; }
 function saveDraft(){ try{ localStorage.setItem(DRAFT_KEY,JSON.stringify(getDraftObject())); }catch(e){} }
 function loadDraft(){ try{ const raw=localStorage.getItem(DRAFT_KEY); if(!raw){ alert('پیش‌نویسی پیدا نشد'); return; } applySavedDraft(JSON.parse(raw)); alert('پیش‌نویس بارگذاری شد'); }catch(e){ alert('بارگذاری انجام نشد'); } }
-function applySavedDraft(obj){ document.getElementById('dealName').value=obj.dealName||''; document.getElementById('dealNote').value=obj.dealNote||''; document.getElementById('originDate').value=obj.originDate||''; document.getElementById('monthlyRate').value=obj.monthlyRate||''; document.getElementById('monthBase').value=obj.monthBase||'30'; document.getElementById('bulkText').value=obj.bulkText||''; document.getElementById('rows').innerHTML=''; (obj.rows||[]).forEach(r=>createRow(r.amount,r.date)); if(!(obj.rows||[]).length){ createRow('',''); createRow('',''); } }
+function applySavedDraft(obj){ document.getElementById('dealName').value=obj.dealName||''; document.getElementById('dealNote').value=obj.dealNote||'';
+  document.getElementById('dealTags').value=obj.dealTags||''; document.getElementById('originDate').value=obj.originDate||''; document.getElementById('monthlyRate').value=obj.monthlyRate||''; document.getElementById('monthBase').value=obj.monthBase||'30';
+  document.getElementById('pvMethod').value=obj.pvMethod||'simple'; document.getElementById('bulkText').value=obj.bulkText||''; document.getElementById('rows').innerHTML=''; (obj.rows||[]).forEach(r=>createRow(r.amount,r.date)); if(!(obj.rows||[]).length){ createRow('',''); createRow('',''); } }
 function getHistory(){ try{ return JSON.parse(localStorage.getItem(HISTORY_KEY)||'[]'); }catch(e){ return []; } }
 function setHistory(arr){ localStorage.setItem(HISTORY_KEY,JSON.stringify(arr)); }
-function saveCurrentToHistory(){ if(!lastResult){ alert('اول محاسبه کن'); return; } const arr=getHistory(); arr.unshift({id:'h'+Date.now(),createdAt:new Date().toLocaleString('fa-IR'),name:lastResult.name,note:lastResult.note,draft:getDraftObject(),result:lastResult}); setHistory(arr); renderHistory(); alert('در هیستوری ذخیره شد'); }
-function renderHistory(){ const q=(document.getElementById('historySearch').value||'').trim().toLowerCase(); const items=getHistory().filter(x=>!q||String(x.name||'').toLowerCase().includes(q)||String(x.note||'').toLowerCase().includes(q)); const box=document.getElementById('historyList'); if(!items.length){ box.innerHTML='<div class="empty">هیچ موردی پیدا نشد.</div>'; return; } box.innerHTML=items.map((item,idx)=>`<div class="hist-item"><div class="hist-top"><div><div class="hist-title">${escapeHtml(item.name||('معامله '+(idx+1)))}</div><div class="hist-meta">ثبت: ${item.createdAt}<br>مبدا: ${displayDate8(item.result.originDate)} | چک: ${item.result.count}${item.note?'<br>یادداشت: '+escapeHtml(item.note):''}</div></div><div class="hist-meta">جمع: ${numFmt(item.result.totalFace,2)}<br>تنزیل: ${numFmt(item.result.totalDiscount,2)}</div></div><div class="hist-actions"><button class="btn secondary tiny" onclick="loadHistoryItem('${item.id}')">بارگذاری</button><button class="btn secondary tiny" onclick="copyHistoryItem('${item.id}')">کپی</button><button class="btn danger tiny" onclick="deleteHistoryItem('${item.id}')">حذف</button></div></div>`).join(''); }
+function saveCurrentToHistory(){ if(!lastResult){ alert('اول محاسبه کن'); return; } const arr=getHistory(); arr.unshift({id:'h'+Date.now(),createdAt:new Date().toLocaleString('fa-IR'),name:lastResult.name,note:lastResult.note,tags:lastResult.tags||'',pvMethod:lastResult.pvMethod||'simple',draft:getDraftObject(),result:lastResult}); setHistory(arr); renderHistory();
+renderPreviewPanel(); alert('در هیستوری ذخیره شد'); }
+
+function renderHistory(){
+  const q=(document.getElementById('historySearch').value||'').trim().toLowerCase();
+  const method=(document.getElementById('historyMethodFilter').value||'').trim();
+  const items=getHistory().filter(x=>{
+    const hit=!q||String(x.name||'').toLowerCase().includes(q)||String(x.note||'').toLowerCase().includes(q)||String(x.tags||'').toLowerCase().includes(q)||String(x.result?.monthlyRatePercent||'').includes(q);
+    const methodHit=!method || (x.pvMethod||x.result?.pvMethod||'simple')===method;
+    return hit && methodHit;
+  });
+  const box=document.getElementById('historyList');
+  if(!items.length){ box.innerHTML='<div class="empty">هیچ موردی پیدا نشد.</div>'; return; }
+  box.innerHTML=items.map((item,idx)=>`<div class="hist-item"><div class="hist-top"><div><div class="hist-title">${escapeHtml(item.name||('معامله '+(idx+1)))}</div><div class="hist-meta">ثبت: ${item.createdAt}<br>مبدا: ${displayDate8(item.result.originDate)} | چک: ${item.result.count}<br>مدل: ${(item.pvMethod||item.result?.pvMethod||'simple')==='exact'?'دقیق':'ساده'}${item.tags?'<br>برچسب‌ها: '+escapeHtml(item.tags):''}${item.note?'<br>یادداشت: '+escapeHtml(item.note):''}</div></div><div class="hist-meta">جمع: ${numFmt(item.result.totalFace,0)}<br>تنزیل: ${numFmt(item.result.totalDiscount,0)}<br>نرخ: ${numFmt(item.result.monthlyRatePercent,0)}%</div></div><div class="hist-actions"><button class="btn secondary tiny" onclick="loadHistoryItem('${item.id}')">بارگذاری</button><button class="btn secondary tiny" onclick="copyHistoryItem('${item.id}')">کپی</button><button class="btn danger tiny" onclick="deleteHistoryItem('${item.id}')">حذف</button></div></div>`).join('');
+}
 function loadHistoryItem(id){ const item=getHistory().find(x=>x.id===id); if(!item){ alert('یافت نشد'); return; } applySavedDraft(item.draft); lastResult=item.result; renderResult(); alert('معامله بارگذاری شد'); }
 function copyHistoryItem(id){ const item=getHistory().find(x=>x.id===id); if(!item){ alert('یافت نشد'); return; } fallbackCopy(buildReport(item.result)); }
 function deleteHistoryItem(id){ setHistory(getHistory().filter(x=>x.id!==id)); renderHistory(); }
 function clearHistory(){ localStorage.removeItem(HISTORY_KEY); renderHistory(); }
 function exportHistory(){ const items=getHistory(); if(!items.length){ alert('هیستوری خالی است'); return; } saveBlob('check_discount_history.json',JSON.stringify(items,null,2),'application/json;charset=utf-8'); }
+
+function printReport(){
+  if(!lastResult){ alert('اول محاسبه کن'); return; }
+  const w=window.open('','_blank');
+  const body=`<!doctype html><html lang="fa" dir="rtl"><head><meta charset="utf-8"><title>گزارش رسمی معامله</title><style>body{font-family:-apple-system,Tahoma,sans-serif;padding:24px;line-height:1.9;color:#111}h1{font-size:20px}pre{white-space:pre-wrap;font-family:inherit}.muted{color:#666;font-size:12px}</style></head><body><h1>گزارش رسمی راس‌گیری و تنزیل چک</h1><div class="muted">قابل ذخیره به PDF از مسیر چاپ مرورگر</div><pre>${escapeHtml(buildReport(lastResult))}</pre></body></html>`;
+  w.document.write(body); w.document.close(); w.focus(); setTimeout(()=>w.print(),300);
+}
+function runReverseCalc(){
+  const face=Number(faToEn(document.getElementById('revFace').value))*1000000;
+  const rate=Number(faToEn(document.getElementById('revRate').value))/100;
+  const days=Number(faToEn(document.getElementById('revDays').value));
+  if(!(face>0&&rate>=0&&days>0)){ document.getElementById('reverseBox').textContent='ورودی‌ها ناقص است'; return; }
+  const base=face/(1+(rate/30)*days);
+  const totalInterest=face-base;
+  document.getElementById('reverseBox').innerHTML='عدد معادل راس: <b>'+numFmt(base,0)+'</b><br>جمع سود خطی: <b>'+numFmt(totalInterest,0)+'</b>';
+}
 
 function toggleActionPanel(){
   const panel=document.getElementById('bottomActionPanel');
@@ -970,7 +1022,7 @@ function closeKpiInfo(){
 
 window.addEventListener('beforeunload',saveDraft);
 window.addEventListener('load',()=>{
-  ['dealName','dealNote','originDate','monthlyRate','monthBase','bulkText','historySearch'].forEach(id=>{
+  ['dealName','dealNote','dealTags','originDate','monthlyRate','monthBase','pvMethod','bulkText','historySearch','historyMethodFilter','bulkDateInput','bulkAmountInput'].forEach(id=>{
     const el=document.getElementById(id);
     if(el){
       el.addEventListener('input',()=>{ if(id==='historySearch') renderHistory(); else saveDraft(); });
@@ -1013,6 +1065,14 @@ renderHistory();
         <button class="btn secondary bottom-mini-btn" onclick="downloadCSV()">خروجی CSV</button>
         <button class="btn secondary bottom-mini-btn" onclick="downloadTXT()">خروجی TXT</button>
         <button class="btn secondary bottom-mini-btn" onclick="loadDraft()">پیش‌نویس</button>
+        <button class="btn secondary bottom-mini-btn" onclick="printReport()">چاپ / PDF</button>
+        <button class="btn secondary bottom-mini-btn" onclick="toggleTestPanel()">تست‌ها</button>
+      </div>
+      <div id="testPanel" class="test-panel" style="display:none">
+        <div class="preview-title">تست خودکار سناریوها</div>
+        <div class="mini" style="margin:6px 0">برای جلوگیری از خراب شدن parsing و محاسبات بعد از هر تغییر.</div>
+        <button class="btn secondary tiny" onclick="runSelfTests()">اجرای تست‌ها</button>
+        <div id="testResults" class="mini" style="margin-top:8px"></div>
       </div>
       <div id="progressWrap" style="margin-top:8px;display:none">
         <progress id="progressBar" value="0" max="100"></progress>

@@ -1,1 +1,1 @@
-{"name": "اپ راس‌گیری چک", "short_name": "راس‌گیری چک", "start_url": "./", "display": "standalone", "background_color": "#0f172a", "theme_color": "#0f172a", "lang": "fa", "dir": "rtl", "icons": [{"src": "icon-1024.png", "sizes": "1024x1024", "type": "image/png", "purpose": "any maskable"}]}
+{"name":"اپ راس‌گیری چک","short_name":"راس‌گیری چک","start_url":"./","display":"standalone","background_color":"#0f172a","theme_color":"#0f172a","lang":"fa","dir":"rtl","icons":[{"src":"icon-1024.png","sizes":"1024x1024","type":"image/png","purpose":"any maskable"}]}
